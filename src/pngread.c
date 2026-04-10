@@ -350,7 +350,7 @@ uint64_t add_PNG_background_metadata (struct context * context, const struct PNG
   switch (imagetype) {
     case 0: case 4:
       if (read_be32_unaligned(data - 8) != 2) throw(context, PLUM_ERR_INVALID_FILE_FORMAT);
-      color = read_le16_unaligned(data);
+      color = read_be16_unaligned(data);
       if (color >> bitdepth) return 0;
       color = 0x100010001u * (uint64_t) bitextend16(color, bitdepth);
       break;
